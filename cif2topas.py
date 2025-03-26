@@ -1,3 +1,6 @@
+#Version 0.1
+#Author: Tom Wood
+
 import sys
 import re
 

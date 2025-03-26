@@ -1,4 +1,4 @@
-# cif2topas
+# cif2topas v0.1
 `cif2topas` is a command line tool that reads a .cif file and outputs a text file with the relevant structural information formatted in a way that may be used in a TOPAS Academic structure.
 ## Installation
 The only requirement is a working installation of Python (>3.6)
