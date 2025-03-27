@@ -1,4 +1,5 @@
-#Version 0.1
+#Version 0.1.1
+#27/03/2025
 #Author: Tom Wood
 
 import sys
@@ -198,7 +199,7 @@ class Structure:
                         for dim in ['x', 'y', 'z']:
                             s += f" {dim} "
                             s += loop[f'_atom_site_fract_{dim}'][i].split('(')[0]
-                        s += f" occ {loop['_atom_site_occupancy'][i].split('(')[0]} "
+                        s += f" occ {site_lab} {loop['_atom_site_occupancy'][i].split('(')[0]} "
                         if '_atom_site_U_iso_or_equiv' in loop:
                             s += f" beq {float(loop['_atom_site_U_iso_or_equiv'][i].split('(')[0]) * 8 * 3.14159**2:.3f}"
                         elif '_atom_site_B_iso_or_equiv' in loop:
