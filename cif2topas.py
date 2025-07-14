@@ -194,14 +194,17 @@ class Structure:
                 if '_atom_site_label' in self.props[k]:
                     loop = self.props[k]
                     for i in range(len(loop['_atom_site_label'])):
-                        site_lab = re.split('(\d+)', loop['_atom_site_label'][i])[0]
+                        site_lab = re.split('(\\d+)', loop['_atom_site_label'][i])[0]
                         s += f"site {site_lab}"
                         for dim in ['x', 'y', 'z']:
                             s += f" {dim} "
                             s += loop[f'_atom_site_fract_{dim}'][i].split('(')[0]
                         s += f" occ {site_lab} {loop['_atom_site_occupancy'][i].split('(')[0]} "
                         if '_atom_site_U_iso_or_equiv' in loop:
-                            s += f" beq {float(loop['_atom_site_U_iso_or_equiv'][i].split('(')[0]) * 8 * 3.14159**2:.3f}"
+                            if loop['_atom_site_U_iso_or_equiv'][i] == '.':
+                                s += ' beq .'
+                            else:
+                                s += f" beq {float(loop['_atom_site_U_iso_or_equiv'][i].split('(')[0]) * 8 * 3.14159**2:.3f}"
                         elif '_atom_site_B_iso_or_equiv' in loop:
                             s += f" beq {loop['_atom_site_B_iso_or_equiv'][i].split('(')[0]}"
                         else:
