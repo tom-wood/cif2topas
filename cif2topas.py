@@ -74,25 +74,25 @@ class Structure:
         with open(fname, 'r') as f:
             for line in f:
                 #this bit is clunky, but couldn't find an elegant regex way of doing it.
-                l = re.split('\'|\"', line)
+                l = re.split('\'|\"', line.strip())
                 if len(l) > 1:
                     l = []
                     inquot = False
                     quot_start = None
                     s_start = 0
-                    for i, char in enumerate(line):
+                    for i, char in enumerate(line.strip()):
                         if char == '\'' or char == '\"':
                             if inquot:
                                 inquot = False
-                                l.append(line[quot_start + 1:i])
+                                l.append(line.strip()[quot_start + 1:i])
                                 s_start = i + 1
                             else:
                                 inquot = True
                                 quot_start = i
                         else:
                             if inquot is False:
-                                if char == ' ' or i == len(line) - 1:
-                                    l.append(line[s_start:i])
+                                if char == ' ' or i == len(line.strip()) - 1:
+                                    l.append(line.strip()[s_start:i])
                                     s_start = i + 1
                 else:
                     l = line.split()

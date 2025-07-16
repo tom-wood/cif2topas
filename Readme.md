@@ -1,4 +1,4 @@
-# cif2topas v0.1.1
+# cif2topas v0.1.2
 `cif2topas` is a command line tool that reads a .cif file and outputs a text file with the relevant structural information formatted in a way that may be used in a TOPAS Academic structure.
 ## Installation
 The only requirement is a working installation of Python (>3.6)
@@ -11,3 +11,7 @@ Report any issues on github.
 ## Changes
 ### v0.1.1
 - Fixed lack of atomic information after occ keyword
+### v0.1.2 (16/07/2025)
+- Fixed non-supported escape character in regex
+- Fixed when U values are given as a single full stop character
+- Fixed when string values are preceded by only empty whitespace on a new line
