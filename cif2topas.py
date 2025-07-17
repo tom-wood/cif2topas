@@ -74,7 +74,12 @@ class Structure:
         with open(fname, 'r') as f:
             for line in f:
                 #this bit is clunky, but couldn't find an elegant regex way of doing it.
-                l = re.split('\'|\"', line.strip())
+                both_quot = False
+                if '\'' in line and '\"' in line:
+                    both_quot = True
+                    l = re.split('\"', line.strip())
+                else:
+                    l = re.split('\'|\"', line.strip())
                 if len(l) > 1:
                     l = []
                     inquot = False
@@ -82,6 +87,9 @@ class Structure:
                     s_start = 0
                     for i, char in enumerate(line.strip()):
                         if char == '\'' or char == '\"':
+                            if both_quot:
+                                if char == '\'':
+                                    continue
                             if inquot:
                                 inquot = False
                                 l.append(line.strip()[quot_start + 1:i])

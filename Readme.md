@@ -15,3 +15,5 @@ Report any issues on github.
 - Fixed non-supported escape character in regex
 - Fixed when U values are given as a single full stop character
 - Fixed when string values are preceded by only empty whitespace on a new line
+### v0.1.3 (17/07/2025)
+- Now enabled to deal with authors that have single quotation marks in their names
